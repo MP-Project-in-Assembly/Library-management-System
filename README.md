@@ -1,6 +1,6 @@
 In this Project we create "Library Management System".
 
-The System consist of 5 main functions:
+The System consist of 8 main functions:
   - Add new member to the system (create new account).
   - Sign in the System if the member already exists.
 
