@@ -1,6 +1,4 @@
-<summary>
-Assembly Language Snake Game
-</summary>
+#Assembly Language Snake Game
 
 About the project
 
