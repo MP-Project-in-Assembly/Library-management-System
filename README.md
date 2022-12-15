@@ -6,7 +6,7 @@ This program is a personal project when I was learning 'computer organization an
 
 ## Features and Functions
 
-### Game Speed Selection
+#### Game Speed Selection
 - User may choose from three speed levels, level 1 to level 3, level 3 being the slowest.
 - Each of the speed levels have a 40ms difference.
 
@@ -36,7 +36,7 @@ This program is a personal project when I was learning 'computer organization an
 - Snake dies when it collides with itself
 - A function loops through the coordinates of the body of the snake and compares with the head position to check if they collide.
 
-### Wall Collision Detection
+#### Wall Collision Detection
 - When the Snake moves, the coordinate of the head is compared with the coordinate of the coin to check whether the snake collides with the wall
 - Snake dies when it collides with the wall
 - A function compares the coordinates of the wall and the head to check if they collide
