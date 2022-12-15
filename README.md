@@ -20,7 +20,7 @@ This program is a personal project when I was learning 'computer organization an
 - If no key is entered, the program will keep looping and waiting for an input.
 - If the snake is moving and a valid input is not entered, the function will continuously loop and snake will continuous to move at the current direction.
 - If the user enters a new input that moves the snake in a different direction, the program will jump to a function that changes the function of the snake.
-- 
+
 #### Move Snake
 - The head of the snake will be moved according to the user's last known input.
 - The body of the snake will be moved to the coordinate of the unit before it (eg: the 3rd unit of the body will move to the coordinates of the 2nd unit of the body)
