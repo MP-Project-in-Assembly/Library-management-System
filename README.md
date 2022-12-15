@@ -4,8 +4,8 @@ This program is a personal project when I was learning 'computer organization an
 
 Features and Functions
   Game Speed Selection
-    - User may choose from three speed levels, level 1 to level 3, level 3 being the slowest.
-    - Each of the speed levels have a 40ms difference.
+- User may choose from three speed levels, level 1 to level 3, level 3 being the slowest.
+- Each of the speed levels have a 40ms difference.
   Random Generation of coin
     - A coin is generated randomly at the start of every game or when the snake eats the previous coin.
     - A checking function is also created to make sure that the random coin doesnt generate on the coordinates of the snake.
