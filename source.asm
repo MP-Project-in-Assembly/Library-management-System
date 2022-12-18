@@ -33,3 +33,38 @@ lastInputChar BYTE ?
 
 strSpeed BYTE "Speed (1-fast, 2-medium, 3-slow): ",0
 speed	DWORD 0
+DrawWall PROC					;procedure to draw wall
+	mov dl,xPosWall[0]
+	mov dh,yPosWall[0]
+	call Gotoxy	
+	mov edx,OFFSET xWall
+	call WriteString			;draw upper wall
+
+	mov dl,xPosWall[1]
+	mov dh,yPosWall[1]
+	call Gotoxy	
+	mov edx,OFFSET xWall		
+	call WriteString			;draw lower wall
+
+	mov dl, xPosWall[2]
+	mov dh, yPosWall[2]
+	mov eax,"#"	
+	inc yPosWall[3]
+	L11: 
+	call Gotoxy	
+	call WriteChar	
+	inc dh
+	cmp dh, yPosWall[3]			;draw right wall	
+	jl L11
+
+	mov dl, xPosWall[0]
+	mov dh, yPosWall[0]
+	mov eax,"#"	
+	L12: 
+	call Gotoxy	
+	call WriteChar	
+	inc dh
+	cmp dh, yPosWall[3]			;draw left wall
+	jl L12
+	ret
+DrawWall ENDP
