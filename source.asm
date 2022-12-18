@@ -68,3 +68,13 @@ DrawWall PROC					;procedure to draw wall
 	jl L12
 	ret
 DrawWall ENDP
+DrawScoreboard PROC				;procedure to draw scoreboard
+	mov dl,2
+	mov dh,1
+	call Gotoxy
+	mov edx,OFFSET strScore		;print string that indicates score
+	call WriteString
+	mov eax,"0"
+	call WriteChar				;scoreboard starts with 0
+	ret
+DrawScoreboard ENDP
