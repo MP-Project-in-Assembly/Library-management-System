@@ -37,7 +37,14 @@ speed	DWORD 0
 main PROC
 	call DrawWall			;draw walls
 	call DrawScoreboard		;draw scoreboard
-	call ChooseSpeed		;let player to choose Speed                            
+	call ChooseSpeed		;let player to choose Speed  
+	mov esi,0
+	mov ecx,5
+drawSnake:
+	call DrawPlayer			;draw snake(start with 5 units)
+	inc esi
+loop drawSnake
+
 INVOKE ExitProcess,0
 main ENDP
 DrawWall PROC					;procedure to draw wall
