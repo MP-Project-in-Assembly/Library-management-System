@@ -78,3 +78,37 @@ DrawScoreboard PROC				;procedure to draw scoreboard
 	call WriteChar				;scoreboard starts with 0
 	ret
 DrawScoreboard ENDP
+ChooseSpeed PROC			;procedure for player to choose speed
+	mov edx,0
+	mov dl,71				
+	mov dh,1
+	call Gotoxy	
+	mov edx,OFFSET strSpeed	; prompt to enter integers (1,2,3)
+	call WriteString
+	mov esi, 40				; milisecond difference per speed level
+	mov eax,0
+	call readInt			
+	cmp ax,1				;input validation
+	jl invalidspeed
+	cmp ax, 3
+	jg invalidspeed
+	mul esi	
+	mov speed, eax			;assign speed variable in mililiseconds
+	ret
+
+	invalidspeed:			;jump here if user entered an invalid number
+	mov dl,105				
+	mov dh,1
+	call Gotoxy	
+	mov edx, OFFSET invalidInput		;print error message		
+	call WriteString
+	mov ax, 1500
+	call delay
+	mov dl,105				
+	mov dh,1
+	call Gotoxy	
+	mov edx, OFFSET blank				;erase error message after 1.5 secs of delay
+	call writeString
+	call ChooseSpeed					;call procedure for user to choose again
+	ret
+ChooseSpeed ENDP
