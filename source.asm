@@ -33,6 +33,13 @@ lastInputChar BYTE ?
 
 strSpeed BYTE "Speed (1-fast, 2-medium, 3-slow): ",0
 speed	DWORD 0
+.code
+main PROC
+	call DrawWall			;draw walls
+	call DrawScoreboard		;draw scoreboard
+	call ChooseSpeed		;let player to choose Speed                            
+INVOKE ExitProcess,0
+main ENDP
 DrawWall PROC					;procedure to draw wall
 	mov dl,xPosWall[0]
 	mov dh,yPosWall[0]
