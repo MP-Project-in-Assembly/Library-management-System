@@ -18,6 +18,9 @@ strPoints BYTE " point(s)",0
 blank BYTE "                                     ",0
 tit BYTE "SNAKE GAME",0
 separator BYTE "---------------------------------",0
+hlths BYTE "Lives:",3,3,3,0
+highScoreStr BYTE "High Score: ",0
+highScore BYTE 0
 snake BYTE "X", 104 DUP("x")
 
 xPos BYTE 45,44,43,42,41, 100 DUP(?)
@@ -103,18 +106,30 @@ DrawWall PROC					;procedure to draw wall
 	ret
 DrawWall ENDP
 DrawScoreboard PROC				;procedure to draw scoreboard
-	mov dl,2
+	mov dl,27
 	mov dh,3
 	call Gotoxy
 	mov edx,OFFSET strScore		;print string that indicates score
 	call WriteString
 	mov eax,"0"
 	call WriteChar				;scoreboard starts with 0
+	mov dl, 12; 
+	mov dh,3
+	call Gotoxy
+	mov edx,OFFSET hlths
+	call WriteString
+	mov dl,52
+	mov dh,3
+	call Gotoxy
+	mov edx,OFFSET highScoreStr 
+	call WriteString
+	mov eax, "0"
+	call WriteChar
 	ret
 DrawScoreboard ENDP
 ChooseSpeed PROC			;procedure for player to choose speed
 	mov edx,0
-	mov dl,71				
+	mov dl,73				
 	mov dh,3
 	call Gotoxy	
 	mov edx,OFFSET strSpeed	; prompt to enter integers (1,2,3)
