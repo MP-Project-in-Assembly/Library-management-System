@@ -16,7 +16,8 @@ invalidInput BYTE "invalid input",0
 strYouDied BYTE "you died ",0
 strPoints BYTE " point(s)",0
 blank BYTE "                                     ",0
-
+tit BYTE "SNAKE GAME",0
+separator BYTE "_________________________________",0
 snake BYTE "X", 104 DUP("x")
 
 xPos BYTE 45,44,43,42,41, 100 DUP(?)
@@ -37,6 +38,7 @@ speed	DWORD 0
 main PROC
 	call DrawWall			;draw walls
 	call DrawScoreboard		;draw scoreboard
+	call PrintTitle
 	call ChooseSpeed		;let player to choose Speed  
 	mov esi,0
 	mov ecx,5
@@ -47,6 +49,20 @@ loop drawSnake
 
 INVOKE ExitProcess,0
 main ENDP
+
+PrintTitle PROC	
+mov dl, 55
+mov dh, 27
+call Gotoxy
+mov edx, OFFSET tit
+call WriteString
+mov dl,43
+mov dh,28
+call Gotoxy
+mov edx,OFFSET separator
+call WriteString
+PrintTitle ENDP
+
 DrawWall PROC					;procedure to draw wall
 	mov dl,xPosWall[0]
 	mov dh,yPosWall[0]
