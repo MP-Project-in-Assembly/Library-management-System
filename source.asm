@@ -183,3 +183,14 @@ UpdatePlayer PROC		; erase player at (xPos,yPos)
 	mov al, dl
 	ret
 UpdatePlayer ENDP
+
+
+
+;_____________________________________________________________________
+;create the file
+   mov  eax, 8
+   mov  ebx, file_name
+   mov  ecx, 0777        ;read, write and execute by all
+   int  0x80             ;call kernel
+	
+   mov [fd_out], eax
