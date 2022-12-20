@@ -194,7 +194,17 @@ CreateRandomCoin PROC				;procedure to create a random coin
 CreateRandomCoin ENDP
 
 DrawCoin PROC						;procedure to draw coin
-;implementation
+	;implementation
+	mov eax,yellow (yellow * 16)
+	call SetTextColor				;set color to yellow for coin
+	mov dl,xCoinPos
+	mov dh,yCoinPos
+	call Gotoxy
+	mov al,"X"
+	call WriteChar
+	mov eax,white (black * 16)		;reset color to black and white
+	call SetTextColor
+	ret
 DrawCoin ENDP
 
 
