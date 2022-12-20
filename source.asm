@@ -17,7 +17,7 @@ strYouDied BYTE "you died ",0
 strPoints BYTE " point(s)",0
 blank BYTE "                                     ",0
 tit BYTE "SNAKE GAME",0
-separator BYTE "_________________________________",0
+separator BYTE "---------------------------------",0
 snake BYTE "X", 104 DUP("x")
 
 xPos BYTE 45,44,43,42,41, 100 DUP(?)
@@ -52,12 +52,12 @@ main ENDP
 
 PrintTitle PROC	
 mov dl, 55
-mov dh, 27
+mov dh, 1
 call Gotoxy
 mov edx, OFFSET tit
 call WriteString
 mov dl,43
-mov dh,28
+mov dh,2
 call Gotoxy
 mov edx,OFFSET separator
 call WriteString
@@ -100,7 +100,7 @@ DrawWall PROC					;procedure to draw wall
 DrawWall ENDP
 DrawScoreboard PROC				;procedure to draw scoreboard
 	mov dl,2
-	mov dh,1
+	mov dh,3
 	call Gotoxy
 	mov edx,OFFSET strScore		;print string that indicates score
 	call WriteString
@@ -111,7 +111,7 @@ DrawScoreboard ENDP
 ChooseSpeed PROC			;procedure for player to choose speed
 	mov edx,0
 	mov dl,71				
-	mov dh,1
+	mov dh,3
 	call Gotoxy	
 	mov edx,OFFSET strSpeed	; prompt to enter integers (1,2,3)
 	call WriteString
