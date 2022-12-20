@@ -42,13 +42,18 @@ main PROC
 	call DrawWall			;draw walls
 	call DrawScoreboard		;draw scoreboard
 	call PrintTitle
-	call ChooseSpeed		;let player to choose Speed  
+	call ChooseSpeed		;let player to choose Speed
+	
 	mov esi,0
 	mov ecx,5
 drawSnake:
 	call DrawPlayer			;draw snake(start with 5 units)
 	inc esi
 loop drawSnake
+
+	call Randomize                  ;implementation inside Irvine 
+	call CreateRandomCoin
+	call DrawCoin			;set up finish
 
 INVOKE ExitProcess,0
 main ENDP
@@ -184,6 +189,13 @@ UpdatePlayer PROC		; erase player at (xPos,yPos)
 	ret
 UpdatePlayer ENDP
 
+CreateRandomCoin PROC				;procedure to create a random coin
+;implementation
+CreateRandomCoin ENDP
+
+DrawCoin PROC						;procedure to draw coin
+;implementation
+DrawCoin ENDP
 
 
 ;_____________________________________________________________________
