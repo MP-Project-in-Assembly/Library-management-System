@@ -293,7 +293,7 @@ DrawBody ENDP
 ;    	INT 21H 
 
 
-;_____________________implementation of erite char____________________
+;_____________________implementation of write char____________________
 ;       load char in EAX
 
 
