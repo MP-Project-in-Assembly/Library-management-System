@@ -118,7 +118,7 @@ DrawWall PROC					;procedure to draw wall
 	mov dl,xPosWall[1]
 	mov dh,yPosWall[1]
 	call Gotoxy	
-	mov edx,OFFSET xWall		
+	mov edx,OFFSET xWall                    ;LEA edx,xWall		
 	call WriteString			;draw lower wall
 
 	mov dl, xPosWall[2]
