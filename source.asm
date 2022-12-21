@@ -177,9 +177,9 @@ ChooseSpeed PROC			;procedure for player to choose speed
 	mov eax,0
 	call readInt			
 	cmp ax,1				;input validation
-	jl invalidspeed
+	jl invalidspeed                         ;jump if less than 1
 	cmp ax, 3
-	jg invalidspeed
+	jg invalidspeed                         ;jump if greater than one
 	mul esi	
 	mov speed, eax			;assign speed variable in mililiseconds
 	ret
