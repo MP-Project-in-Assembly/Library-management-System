@@ -86,8 +86,29 @@ loop drawSnake
 		jne gameLoop					; reloop if no meaningful key was entered
 		
 		
+		; check whether can continue moving
+		checkBottom:	
+		cmp lastInputChar, "w"
+		je dontChgDirection		;cant go down immediately after going up
+		mov cl, yPosWall[1]
+		dec cl					;one unit ubove the y-coordinate of the lower bound
+		cmp yPos[0],cl
+		jl moveDown
+		je died					;die if crash into the wall
 		
-
+		moveDown:			;move down
+		mov eax, speed
+		add eax, speed
+		call delay
+		mov esi, 0
+		call UpdatePlayer
+		mov ah, yPos[esi]
+		mov al, xPos[esi]
+		inc yPos[esi]
+		call DrawPlayer
+		call DrawBody
+		call CheckSnake
+		
 INVOKE ExitProcess,0
 main ENDP
 
