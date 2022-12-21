@@ -92,20 +92,21 @@ INVOKE ExitProcess,0
 main ENDP
 
 PrintTitle PROC	
-mov eax,cyan
-call SetTextColor
-mov dl, 55
-mov dh, 1
-call Gotoxy
-mov edx, OFFSET tit
-call WriteString
-mov dl,43
-mov dh,2
-call Gotoxy
-mov edx,OFFSET separator
-call WriteString
-mov eax,white (black * 16)		;reset color to black and white
-call SetTextColor
+	mov eax,cyan
+	call SetTextColor
+	mov dl, 55
+	mov dh, 1
+	call Gotoxy
+	mov edx, OFFSET tit
+	call WriteString
+	mov dl,43
+	mov dh,2
+	call Gotoxy
+	mov edx,OFFSET separator
+	call WriteString
+	mov eax,white (black * 16)		;reset color to black and white
+	call SetTextColor
+	ret
 PrintTitle ENDP
 
 DrawWall PROC					;procedure to draw wall
