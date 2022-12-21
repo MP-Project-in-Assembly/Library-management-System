@@ -47,3 +47,17 @@ This program is a personal project when I was learning 'computer organization an
 
 #### Input Validation
 - Input Validation is set to detect any invalid input and prompts the user to reenter the input if so.
+## Flowchart
+Flowchart of this program can be downloaded here: [snake game flowchart.pdf](https://github.com/meixinchoy/SnakeGame-asm8086/files/6953798/snake.game.flowchart.pdf)
+
+## Controls
+| Keys              | Actions                     |
+| ----------------- | --------------------------- |
+| w                 | Move up                     |
+| a                 | Move left                   |
+| s                 | Move down                   |
+| d                 | Move right                  |
+| x                 | Quits the game at any time  |
+| enter             | Pause, (w,a,s,d to unpause) |
+
+(make sure that your capslock is disabled)
