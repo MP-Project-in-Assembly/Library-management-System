@@ -54,6 +54,39 @@ loop drawSnake
 	call Randomize                  ;implementation inside Irvine 
 	call CreateRandomCoin
 	call DrawCoin			;set up finish
+	
+	gameLoop::
+		mov dl,106						;move cursor to coordinates
+		mov dh,1
+		call Gotoxy
+
+		; get user key input
+		call ReadKey
+        jz noKey						;jump if no key is entered
+		processInput:
+		mov bl, inputChar
+		mov lastInputChar, bl
+		mov inputChar,al				;assign variables
+
+		noKey:
+		cmp inputChar,"x"	
+		je exitgame						;exit game if user input x
+
+		cmp inputChar,"w"
+		je checkTop
+
+		cmp inputChar,"s"
+		je checkBottom
+
+		cmp inputChar,"a"
+		je checkLeft
+
+		cmp inputChar,"d"
+		je checkRight
+		jne gameLoop					; reloop if no meaningful key was entered
+		
+		
+		
 
 INVOKE ExitProcess,0
 main ENDP
