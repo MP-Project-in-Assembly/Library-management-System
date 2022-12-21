@@ -96,6 +96,18 @@ loop drawSnake
 		jl moveDown
 		je died					;die if crash into the wall
 		
+		checkLeft:		
+		cmp lastInputChar, "+"	;check whether its the start of the game
+		je dontGoLeft
+		cmp lastInputChar, "d"
+		je dontChgDirection
+		mov cl, xPosWall[0]
+		inc cl
+		cmp xPos[0],cl
+		jg moveLeft
+		je died					; check for left	
+
+
 		moveDown:			;move down
 		mov eax, speed
 		add eax, speed
@@ -105,6 +117,19 @@ loop drawSnake
 		mov ah, yPos[esi]
 		mov al, xPos[esi]
 		inc yPos[esi]
+		call DrawPlayer
+		call DrawBody
+		call CheckSnake
+		
+		
+		moveLeft:			;move left
+		mov eax, speed
+		call delay
+		mov esi, 0
+		call UpdatePlayer
+		mov ah, yPos[esi]
+		mov al, xPos[esi]
+		dec xPos[esi]
 		call DrawPlayer
 		call DrawBody
 		call CheckSnake
