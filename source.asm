@@ -177,6 +177,25 @@ loop drawSnake
 		call DrawPlayer		
 		call DrawBody
 		call CheckSnake
+	
+	
+	
+	dontChgDirection:		;dont allow user to change direction
+	mov inputChar, bl		;set current inputChar as previous
+	jmp noKey				;jump back to continue moving the same direction 
+
+	dontGoLeft:				;forbids the snake to go left at the begining of the game
+	mov	inputChar, "+"		;set current inputChar as "+"
+	jmp gameLoop			;restart the game loop
+
+	died::
+	call YouDied
+	 
+	playagn::			
+	call ReinitializeGame			;reinitialise everything
+	
+	exitgame::
+	exit
 		
 INVOKE ExitProcess,0
 main ENDP
