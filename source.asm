@@ -190,7 +190,32 @@ UpdatePlayer PROC		; erase player at (xPos,yPos)
 UpdatePlayer ENDP
 
 CreateRandomCoin PROC				;procedure to create a random coin
-;implementation
+	;implementation
+	mov eax,49
+	call RandomRange	;0-49
+	add eax, 35			;35-84
+	mov xCoinPos,al
+	mov eax,17
+	call RandomRange	;0-17
+	add eax, 6			;6-23
+	mov yCoinPos,al
+
+	mov ecx, 5
+	add cl, score				;loop number of snake unit
+	mov esi, 0
+checkCoinXPos:
+	movzx eax,  xCoinPos
+	cmp al, xPos[esi]		
+	je checkCoinYPos			;jump if xPos of snake at esi = xPos of coin
+	continueloop:
+	inc esi
+loop checkCoinXPos
+	ret							; return when coin is not on snake
+	checkCoinYPos:
+	movzx eax, yCoinPos			
+	cmp al, yPos[esi]
+	jne continueloop			; jump back to continue loop if yPos of snake at esi != yPos of coin
+	call CreateRandomCoin		; coin generated on snake, calling function again to create another set of coordinates
 CreateRandomCoin ENDP
 
 DrawCoin PROC						;procedure to draw coin
