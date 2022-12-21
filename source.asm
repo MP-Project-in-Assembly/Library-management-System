@@ -287,6 +287,14 @@ DrawBody PROC		;procedure to print body of the snake
 DrawBody ENDP
 
 
+;______________________implementation of write string_________________
+;	load address in EDX
+;	MOV AH,9      
+;    	INT 21H 
+
+
+;_____________________implementation of erite char____________________
+;       load char in EAX
 
 
 
