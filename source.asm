@@ -116,15 +116,26 @@ loop drawSnake
 		jl moveRight
 		je died					; check for right	
 
+		checkTop:		
+		cmp lastInputChar, "s"
+		je dontChgDirection
+		mov cl, yPosWall[0]
+		inc cl
+		cmp yPos,cl
+		jg moveUp
+		je died				; check for up	
+		
+		
+		
 		moveDown:			;move down
-		mov eax, speed
-		add eax, speed
+		mov eax, speed			;slow down the moving
+		add eax, speed			
 		call delay
-		mov esi, 0
+		mov esi, 0			;index 0(snake head)
 		call UpdatePlayer
-		mov ah, yPos[esi]
-		mov al, xPos[esi]
-		inc yPos[esi]
+		mov ah, yPos[esi]	
+		mov al, xPos[esi]		;al,ah stores the pos of the snake's next unit
+		inc yPos[esi]			;move the head up
 		call DrawPlayer
 		call DrawBody
 		call CheckSnake
@@ -151,6 +162,19 @@ loop drawSnake
 		mov al, xPos[esi]
 		inc xPos[esi]
 		call DrawPlayer
+		call DrawBody
+		call CheckSnake
+		
+		moveUp:		
+		mov eax, speed		;slow down the moving
+		add eax, speed
+		call delay
+		mov esi, 0			;index 0(snake head)
+		call UpdatePlayer	
+		mov ah, yPos[esi]	
+		mov al, xPos[esi]	;al,ah stores the pos of the snake's next unit 
+		dec yPos[esi]		;move the head up
+		call DrawPlayer		
 		call DrawBody
 		call CheckSnake
 		
