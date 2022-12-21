@@ -177,6 +177,19 @@ loop drawSnake
 		call DrawPlayer		
 		call DrawBody
 		call CheckSnake
+		
+		; getting points
+		checkcoin::
+		mov esi,0
+		mov bl,xPos[0]
+		cmp bl,xCoinPos
+		jne gameloop			;reloop if snake is not intersecting with coin
+		mov bl,yPos[0]
+		cmp bl,yCoinPos
+		jne gameloop			;reloop if snake is not intersecting with coin
+
+		call EatingCoin			;call to update score, append snake and generate new coin
+	jmp gameLoop				;reiterate the gameloop
 	
 	
 	
