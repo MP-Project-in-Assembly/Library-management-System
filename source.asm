@@ -107,6 +107,14 @@ loop drawSnake
 		jg moveLeft
 		je died					; check for left	
 
+		checkRight:		
+		cmp lastInputChar, "a"
+		je dontChgDirection
+		mov cl, xPosWall[2]
+		dec cl
+		cmp xPos[0],cl
+		jl moveRight
+		je died					; check for right	
 
 		moveDown:			;move down
 		mov eax, speed
@@ -130,6 +138,18 @@ loop drawSnake
 		mov ah, yPos[esi]
 		mov al, xPos[esi]
 		dec xPos[esi]
+		call DrawPlayer
+		call DrawBody
+		call CheckSnake
+		
+		moveRight:			;move right
+		mov eax, speed
+		call delay
+		mov esi, 0
+		call UpdatePlayer
+		mov ah, yPos[esi]
+		mov al, xPos[esi]
+		inc xPos[esi]
 		call DrawPlayer
 		call DrawBody
 		call CheckSnake
