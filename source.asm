@@ -208,6 +208,29 @@ DrawCoin PROC						;procedure to draw coin
 DrawCoin ENDP
 
 
+
+DrawBody PROC		;procedure to print body of the snake
+	mov ecx, 4
+	add cl, score	;number of iterations to print the snake body n tail	
+	printbodyloop:	
+	inc esi		;loop to print remaining units of snake
+	call UpdatePlayer
+	mov dl, xPos[esi]
+	mov dh, yPos[esi]    ;dldh temporarily stores the current pos of the unit 
+	mov yPos[esi], ah
+	mov xPos[esi], al    ;assign new position to the unit
+	mov al, dl
+	mov ah,dh	     ;move the current position back into alah
+	call DrawPlayer
+	cmp esi, ecx
+	jl printbodyloop
+	ret
+DrawBody ENDP
+
+
+
+
+
 ;_____________________________________________________________________
 ;create the file
    mov  eax, 8
