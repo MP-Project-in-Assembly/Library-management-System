@@ -476,16 +476,6 @@ EatingCoin PROC
 EatingCoin ENDP
 
 
-;______________________implementation of write string_________________
-;	load address in EDX
-;	MOV AH,9      
-;    	INT 21H 
-
-
-;_____________________implementation of write char____________________
-;       load char in EAX
-
-
 
 ;_____________________________________________________________________
 ;create the file
