@@ -374,6 +374,13 @@ loop checkCoinXPos
 	call CreateRandomCoin		; coin generated on snake, calling function again to create another set of coordinates
 CreateRandomCoin ENDP
 
+CheckSnake PROC				;check whether the snake head collides w its body 
+	mov al, xPos[0] 
+	mov ah, yPos[0] 
+	mov esi,4				;start checking from index 4(5th unit)
+	mov ecx,1
+	add cl,score
+
 DrawCoin PROC						;procedure to draw coin
 	;implementation
 	mov eax,yellow (yellow * 16)
