@@ -47,6 +47,8 @@ strSpeed BYTE "Speed (1-fast, 2-medium, 3-slow): ",0
 speed	DWORD 0
 .code
 main PROC
+    call OpenFileAndGetHighScore
+    mainn::
 	call DrawWall			;draw walls
 	call DrawScoreboard		;draw scoreboard
 	call PrintTitle
@@ -216,6 +218,7 @@ loop drawSnake
 	call ReinitializeGame			;reinitialise everything
 	
 	exitgame::
+	call OpenFileAndWriteHighScore
 	exit
 		
 INVOKE ExitProcess,0
@@ -337,8 +340,8 @@ DrawScoreboard PROC				;procedure to draw scoreboard
 	call Gotoxy
 	mov edx,OFFSET strScore		;print string that indicates score
 	call WriteString
-	mov eax,highScore
-	call WriteInt				;scoreboard starts with 0
+	mov eax,"0"
+	call WriteChar				;scoreboard starts with 0
 	mov dl, 12; 
 	mov dh,3
 	call Gotoxy
@@ -349,8 +352,8 @@ DrawScoreboard PROC				;procedure to draw scoreboard
 	call Gotoxy
 	mov edx,OFFSET highScoreStr 
 	call WriteString
-	mov eax, "0"
-	call WriteChar
+	mov eax, highScore
+	call WriteInt
 	ret
 DrawScoreboard ENDP
 ChooseSpeed PROC			;procedure for player to choose speed
