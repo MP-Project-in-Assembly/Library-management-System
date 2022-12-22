@@ -621,7 +621,7 @@ YouDied PROC
 	jmp retry						;let user input again
 YouDied ENDP
 
-ReinitializeGame PROC		
+ReinitializeGame PROC		;procedure to reinitialize everything		
 	mov xPos[0], 45
 	mov xPos[1], 44
 	mov xPos[2], 43
@@ -631,13 +631,13 @@ ReinitializeGame PROC
 	mov yPos[1], 15
 	mov yPos[2], 15
 	mov yPos[3], 15
-	mov yPos[4], 15			
-	mov score,0				
+	mov yPos[4], 15		;reinitialize snake position			
+	mov score,0		;reinitialize score		
 	mov lastInputChar, 0
-	mov	inputChar, "+"			
-	dec yPosWall[3]			
+	mov	inputChar, "+"		;reinitialize inputChar and lastInputChar		
+	dec yPosWall[3]			;reset wall position			
 	Call ClrScr
-	jmp main				
+	jmp main			;start over the game				
 ReinitializeGame ENDP
 END main
 
