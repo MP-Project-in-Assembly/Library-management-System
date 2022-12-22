@@ -117,8 +117,17 @@ RandomRange PROC
 ; EAX = n.
 ;--------------------------------------------------------------
 	 push  ebx
-	 push  edx
+;____________________ReadyKey_____________________________________
 
+MOV CX,0Eh ;Our initial string has 14 characters (E in hexadecimal)
+beginning:
+MOV AH,0 ;INT 16,0 reads one key input
+INT 16h
+CMP AH,1 ;1 is the scan code for the Escape key
+JE ender
+CMP AH,1Ch ;1 is the scan code for the Enter key
+JE ender
+	 push  edx
 	 mov   ebx,eax  ; maximum value
 	 call  Random32 ; eax = random number
 	 mov   edx,0
@@ -127,7 +136,6 @@ RandomRange PROC
 
 	 pop   edx
 	 pop   ebx
-
 	 ret
 RandomRange ENDP
 
