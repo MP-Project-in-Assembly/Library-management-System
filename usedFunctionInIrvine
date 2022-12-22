@@ -15,7 +15,7 @@
 ;       MOV EDX, ADDRESS   	load address in EDX
 ;	      MOV AH,9      
 ;    	  INT 21H 
-;-------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 ;_____________________implementation of write char____________________
@@ -23,7 +23,7 @@
 ;       mov EDX,EAX
 ;       mov ah, 02h
 ;       int 21h
-;--------------------------------------------------------------------------------------------------------------------------------------------
+
 
 ;_____________________implementation of gotoxy________________________
 Gotoxy PROC
@@ -45,7 +45,7 @@ Gotoxy PROC
         popad
         ret
 Gotoxy ENDP
-;---------------------------------------------------------------------------
+
 
 ;_____________________implementation of delay________________________
 Delay PROC
@@ -62,6 +62,7 @@ Delay PROC
 	ret
 
 Delay ENDP
+
 
 ;_____________________implentation of read int______________________
 ;       MOV AH,1         
@@ -87,3 +88,23 @@ SetTextColor PROC
 	popad
 	ret
 SetTextColor ENDP
+
+
+;____________________implementation of Randomize_______________
+Randomize PROC
+;
+; Re-seeds the random number generator with the current time
+; in seconds. Calls GetSystemTime, which is accurate to 10ms.
+; Receives: nothing
+; Returns: nothing
+;--------------------------------------------------------
+	  pushad
+
+	  INVOKE GetSystemTime,OFFSET sysTime
+	  movzx eax,sysTime.wMilliseconds
+	  mov   seed,eax
+
+	  popad
+	  ret
+Randomize ENDP
+
