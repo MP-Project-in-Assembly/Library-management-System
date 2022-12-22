@@ -564,6 +564,28 @@ YouDied PROC
 	call Gotoxy
 	mov edx, OFFSET strTryAgain
 	call WriteString		;"try again?"
+	
+	retry:
+	mov dh, 19
+	mov dl,	56
+	call Gotoxy
+	call ReadInt			;get user input
+	cmp al, 1
+	je playagn				;playagn
+	cmp al, 0
+	je exitgame				;exitgame
+
+	mov dh,	17
+	call Gotoxy
+	mov edx, OFFSET invalidInput	;"Invalid input"
+	call WriteString		
+	mov dl,	56
+	mov dh, 19
+	call Gotoxy
+	mov edx, OFFSET blank			;erase previous input
+	call WriteString
+	jmp retry						;let user input again
+YouDied ENDP
 
 
 ;_____________________________________________________________________
