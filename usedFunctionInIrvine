@@ -148,3 +148,13 @@ MOV DI,CX
 ;but you can't do an offset MOV with CX, so let's use DI, with which we can do an offset MOV.
 MOV [156h+DI],AL ;Store the character in our buffer which begins at 156h
 INC CX
+MOV AH,0Eh ;INT 10,E outputs the character in AL
+MOV BH,0 ;Page number
+MOV BL,7 ;Normal light gray text on a black background
+INT 10h
+JMP beginning
+
+backspace:
+MOV AL,8 ;8 is Backspace!
+MOV AH,0Eh ;INT 10,E outputs the character in AL
+MOV BH,0 ;Page number
