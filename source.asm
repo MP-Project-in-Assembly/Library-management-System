@@ -385,6 +385,13 @@ checkXposition:
 	je XposSame
 	contloop:
 	inc esi
+loop checkXposition
+	jmp checkcoin
+	XposSame:				; if xpos same, check for ypos
+	cmp yPos[esi], ah
+	je died					;if collides, snake dies
+	jmp contloop
+	CheckSnake ENDP
 
 DrawCoin PROC						;procedure to draw coin
 	;implementation
