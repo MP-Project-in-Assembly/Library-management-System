@@ -56,4 +56,19 @@ Delay ENDP
 
 
 ;____________________implementation of set text color_______________
+SetTextColor PROC
 ;
+; Change the color of all subsequent text output.
+; Receives: AX = attribute. Bits 0-3 are the foreground
+; 	color, and bits 4-7 are the background color.
+; Returns: nothing
+;------------------------------------------------------------
+
+	pushad
+	CheckInit
+
+ 	INVOKE SetConsoleTextAttribute, consoleOutHandle, ax
+
+	popad
+	ret
+SetTextColor ENDP
