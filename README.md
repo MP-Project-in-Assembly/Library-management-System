@@ -62,6 +62,3 @@ Flowchart of this program can be downloaded here: [snake game flowchart.pdf](htt
 
 (make sure that your capslock is disabled)
 ## Screenshots
-![image](https://user-images.githubusercontent.com/109994117/209221048-9a40bb06-3ffb-467d-95a8-830ae7b68f61.png)
-
-
