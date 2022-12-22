@@ -14,7 +14,11 @@
 ;
 
 ;_____________________implentation of read int______________________
-;
+;     MOV AH,1         
+;     INT 21H
+;     AX contain hex of char input
+;     sub AX,30H    to transfer into int
+
 
 ;____________________implementation of set text color_______________
 ;
