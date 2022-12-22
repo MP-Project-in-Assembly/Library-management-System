@@ -336,8 +336,10 @@ DrawWall PROC	;procedure to draw wall
 	mov dl,xPosWall[1]
 	mov dh,yPosWall[1]
 	call Gotoxy	
-	mov edx,OFFSET xWall                    ;LEA edx,xWall		
-	call WriteString			;draw lower wall
+	mov edx,OFFSET xWall  
+	 ;LEA edx,xWall	
+	call WriteString
+	;draw lower wall
 
 	mov dl, xPosWall[2]
 	mov dh, yPosWall[2]
@@ -363,7 +365,10 @@ DrawWall PROC	;procedure to draw wall
 	call SetTextColor
 	ret
 DrawWall ENDP
-DrawScoreboard PROC				;procedure to draw scoreboard
+DrawScoreboard PROC	;procedure to draw scoreboard
+        mov eax,blue
+	call SetTextColor
+	
 	mov dl,27
 	mov dh,3
 	call Gotoxy
@@ -383,6 +388,8 @@ DrawScoreboard PROC				;procedure to draw scoreboard
 	call WriteString
 	mov eax, highScore
 	call WriteInt
+	mov eax,white (black * 16)		;reset color to black and white
+	call SetTextColor
 	ret
 DrawScoreboard ENDP
 ChooseSpeed PROC			;procedure for player to choose speed
