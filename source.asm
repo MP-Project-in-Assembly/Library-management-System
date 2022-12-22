@@ -621,6 +621,25 @@ YouDied PROC
 	jmp retry						;let user input again
 YouDied ENDP
 
+ReinitializeGame PROC		
+	mov xPos[0], 45
+	mov xPos[1], 44
+	mov xPos[2], 43
+	mov xPos[3], 42
+	mov xPos[4], 41
+	mov yPos[0], 15
+	mov yPos[1], 15
+	mov yPos[2], 15
+	mov yPos[3], 15
+	mov yPos[4], 15			
+	mov score,0				
+	mov lastInputChar, 0
+	mov	inputChar, "+"			
+	dec yPosWall[3]			
+	Call ClrScr
+	jmp main				
+ReinitializeGame ENDP
+END main
 
 ;_____________________________________________________________________
 ;create the file
