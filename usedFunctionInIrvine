@@ -2,3 +2,8 @@
 ;	load address in EDX
 ;	MOV AH,9      
 ;    	INT 21H 
+
+
+;_____________________implementation of write char____________________
+;       load char in EAX
+
