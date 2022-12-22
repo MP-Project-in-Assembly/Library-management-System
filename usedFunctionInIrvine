@@ -1,11 +1,14 @@
 ;______________________implementation of write string_________________
-;	load address in EDX
-;	MOV AH,9      
-;    	INT 21H 
+;       MOV EDX, ADDRESS   	load address in EDX
+;	      MOV AH,9      
+;    	  INT 21H 
 
 
 ;_____________________implementation of write char____________________
 ;       load char in EAX
+;       mov EDX,EAX
+;       mov ah, 02h
+;       int 21h
 
 ;_____________________implementation of gotoxy________________________
 ;
@@ -14,10 +17,10 @@
 ;
 
 ;_____________________implentation of read int______________________
-;     MOV AH,1         
-;     INT 21H
-;     AX contain hex of char input
-;     sub AX,30H    to transfer into int
+;       MOV AH,1         
+;       INT 21H
+;       AX contain hex of char input
+;       sub AX,30H          to transfer into int
 
 
 ;____________________implementation of set text color_______________
