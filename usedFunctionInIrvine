@@ -182,3 +182,5 @@ MOV SI,156h
 ;Location of our buffer (program code is 56h bytes long)
 looper:
 LODSB
+MOV AH,0Eh ;INT 10,E outputs the character in AL
+MOV BH,0 ;Page number
