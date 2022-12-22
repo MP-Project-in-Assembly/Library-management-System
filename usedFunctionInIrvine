@@ -180,3 +180,5 @@ POP DS
 ;These two lines make DS the current code segment
 MOV SI,156h
 ;Location of our buffer (program code is 56h bytes long)
+looper:
+LODSB
