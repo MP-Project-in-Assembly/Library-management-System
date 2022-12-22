@@ -522,8 +522,22 @@ YouDied PROC
 	mov dl,	57
 	mov dh, 12
 	call Gotoxy
-	mov edx, OFFSET strYouDied	;"you died"
+	mov edx, OFFSET strYouDied	
 	call WriteString
+	
+	mov dl,	56
+	mov dh, 14
+	call Gotoxy
+	movzx eax, score
+	call WriteInt
+	mov edx, OFFSET strPoints	;display score
+	call WriteString
+
+	mov dl,	50
+	mov dh, 18
+	call Gotoxy
+	mov edx, OFFSET strTryAgain
+	call WriteString		;"try again?"
 
 
 ;_____________________________________________________________________
