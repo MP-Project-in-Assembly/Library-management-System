@@ -1,1 +1,4 @@
-
+;______________________implementation of write string_________________
+;	load address in EDX
+;	MOV AH,9      
+;    	INT 21H 
