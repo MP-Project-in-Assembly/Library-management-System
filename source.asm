@@ -324,7 +324,9 @@ PrintTitle PROC
 	ret
 PrintTitle ENDP
 
-DrawWall PROC					;procedure to draw wall
+DrawWall PROC	;procedure to draw wall
+        mov eax,magenta 
+	call SetTextColor
 	mov dl,xPosWall[0]
 	mov dh,yPosWall[0]
 	call Gotoxy	
@@ -357,6 +359,8 @@ DrawWall PROC					;procedure to draw wall
 	inc dh
 	cmp dh, yPosWall[3]			;draw left wall
 	jl L12
+	mov eax,white (black * 16)		;reset color to black and white
+	call SetTextColor
 	ret
 DrawWall ENDP
 DrawScoreboard PROC				;procedure to draw scoreboard
