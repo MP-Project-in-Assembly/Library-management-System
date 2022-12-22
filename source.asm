@@ -20,7 +20,15 @@ tit BYTE "SNAKE GAME",0
 separator BYTE "---------------------------------",0
 hlths BYTE "Lives:",3,3,3,0
 highScoreStr BYTE "High Score: ",0
-highScore BYTE 0
+
+highScore DWORD ?
+fileName BYTE "C:\Users\Ahmed\Desktop\snake\fn.txt",0
+fileNameTemp BYTE "C:\Users\Ahmed\Desktop\snake\fnTmp.txt",0
+bufferSize = 4
+buffer BYTE  bufferSize DUP(?)
+bytesRead DWORD ?
+tst BYTE "005",0
+
 snake BYTE "X", 104 DUP("x")
 
 xPos BYTE 45,44,43,42,41, 100 DUP(?)
@@ -272,8 +280,8 @@ DrawScoreboard PROC				;procedure to draw scoreboard
 	call Gotoxy
 	mov edx,OFFSET strScore		;print string that indicates score
 	call WriteString
-	mov eax,"0"
-	call WriteChar				;scoreboard starts with 0
+	mov eax,highScore
+	call WriteInt				;scoreboard starts with 0
 	mov dl, 12; 
 	mov dh,3
 	call Gotoxy
