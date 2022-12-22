@@ -235,6 +235,23 @@ OpenFileAndGetHighScore PROC
         call CloseFile
 OpenFileAndGetHighScore ENDP
 
+OpenFileAndWriteHighScore PROC
+        push edx
+        push ecx
+        mov edx,OFFSET fileName
+        call CreateOutputFile  
+        mov ebx,eax                           ; ebx -> temporarily to hold the file handle
+        mov edx, OFFSET buffer
+        mov ecx , bufferSize
+        call intToString
+        call WriteToFile
+        mov eax,ebx
+        call CloseFile
+        pop ecx
+        pop edx
+        ret
+OpenFileAndWriteHighScore ENDP
+
 PrintTitle PROC	
 	mov eax,cyan
 	call SetTextColor
