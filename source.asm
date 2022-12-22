@@ -57,7 +57,7 @@ loop drawSnake
 	
 	gameLoop::
 		mov dl,106						;move cursor to coordinates
-		mov dh,1
+		mov dh,3
 		call Gotoxy
 
 		; get user key input
@@ -307,15 +307,15 @@ ChooseSpeed PROC			;procedure for player to choose speed
 	ret
 
 	invalidspeed:			;jump here if user entered an invalid number
-	mov dl,105				
-	mov dh,1
+	mov dl,107				
+	mov dh,3
 	call Gotoxy	
 	mov edx, OFFSET invalidInput		;print error message		
 	call WriteString
 	mov ax, 1500
 	call delay
-	mov dl,105				
-	mov dh,1
+	mov dl,107				
+	mov dh,3
 	call Gotoxy	
 	mov edx, OFFSET blank				;erase error message after 1.5 secs of delay
 	call writeString
@@ -467,8 +467,8 @@ EatingCoin PROC
 	call CreateRandomCoin
 	call DrawCoin			
 
-	mov dl,17				; write updated score
-	mov dh,1
+	mov dl,41				; write updated score
+	mov dh,3
 	call Gotoxy
 	mov al,score
 	call WriteInt
