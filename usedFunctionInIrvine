@@ -11,7 +11,26 @@
 ;       int 21h
 
 ;_____________________implementation of gotoxy________________________
+Gotoxy PROC
 ;
+; Locate the cursor
+; Receives: DH = screen row, DL = screen column
+;--------------------------------------------------------
+.data
+        _cursorPosition COORD <>
+.code
+        pushad
+
+        CheckInit	; was console initialized?
+        movzx ax,dl
+        mov _cursorPosition.X, ax
+        movzx ax,dh
+        mov _cursorPosition.Y, ax
+        INVOKE SetConsoleCursorPosition, consoleOutHandle, _cursorPosition
+
+        popad
+        ret
+Gotoxy ENDP
 
 ;_____________________implementation of delay________________________
 ;
