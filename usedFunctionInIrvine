@@ -138,4 +138,8 @@ JE ender
 	 pop   ebx
 	 ret
 RandomRange ENDP
-
+CMP AH,0E ;0E is the scan code for the Backspace key
+JE backspace
+;At this point, we should have a key input that isn't Escape, Enter, or Backspace.
+;Let's output it to the screen and also copy it to our memory buffer after the program code.
+;The ASCII character is already in AL, so we can just work with that.
