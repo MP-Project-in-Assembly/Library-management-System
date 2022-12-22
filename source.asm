@@ -23,7 +23,6 @@ highScoreStr BYTE "High Score: ",0
 
 highScore DWORD ?
 fileName BYTE "C:\Users\Ahmed\Desktop\snake\fn.txt",0
-fileNameTemp BYTE "C:\Users\Ahmed\Desktop\snake\fnTmp.txt",0
 bufferSize = 4
 buffer BYTE  bufferSize DUP(?)
 bytesRead DWORD ?
@@ -262,8 +261,6 @@ stringToInt PROC
 	ret
 stringToInt ENDP
 
-
-
 OpenFileAndWriteHighScore PROC
         push edx
         push ecx
@@ -280,6 +277,7 @@ OpenFileAndWriteHighScore PROC
         pop edx
         ret
 OpenFileAndWriteHighScore ENDP
+
 
 PrintTitle PROC	
 	mov eax,cyan
@@ -414,7 +412,6 @@ UpdatePlayer PROC		; erase player at (xPos,yPos)
 UpdatePlayer ENDP
 
 CreateRandomCoin PROC				;procedure to create a random coin
-	;implementation
 	mov eax,49
 	call RandomRange	;0-49
 	add eax, 35			;35-84
@@ -559,6 +556,13 @@ YouDied PROC
 	call Gotoxy
 	movzx eax, score
 	call WriteInt
+	
+	cmp eax,highScore
+	jle notUpdateHighScore
+	mov highScore,eax
+	mov eax ,0
+	notUpdateHighScore:	
+	
 	mov edx, OFFSET strPoints	;display score
 	call WriteString
 
