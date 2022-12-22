@@ -8,6 +8,7 @@
 ;cyan         = 0011b
 ;white        = 1111b
 ;magenta      = 0101b
+;yellow       = 1110b
 
 ;______________________implementation of write string_________________
 ;       MOV EDX, ADDRESS   	load address in EDX
