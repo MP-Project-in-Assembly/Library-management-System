@@ -33,7 +33,20 @@ Gotoxy PROC
 Gotoxy ENDP
 
 ;_____________________implementation of delay________________________
+Delay PROC
 ;
+; Delay (pause) the current process for a given number
+; of milliseconds.
+; Receives: EAX = number of milliseconds
+; Returns: nothing
+;------------------------------------------------------
+
+	pushad
+	INVOKE Sleep,eax
+	popad
+	ret
+
+Delay ENDP
 
 ;_____________________implentation of read int______________________
 ;       MOV AH,1         
