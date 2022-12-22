@@ -428,6 +428,53 @@ DrawBody PROC		;procedure to print body of the snake
 	ret
 DrawBody ENDP
 
+EatingCoin PROC
+	; snake is eating coin
+	inc score
+	mov ebx,4
+	add bl, score
+	mov esi, ebx
+	mov ah, yPos[esi-1]
+	mov al, xPos[esi-1]	
+	mov xPos[esi], al		;add one unit to the snake
+	mov yPos[esi], ah		;pos of new tail = pos of old tail
+
+	cmp xPos[esi-2], al		;check if the old tail and the unit before is on the yAxis
+	jne checky				;jump if not on the yAxis
+
+	cmp yPos[esi-2], ah		;check if the new tail should be above or below of the old tail 
+	jl incy			
+	jg decy
+	incy:					;inc if below
+	inc yPos[esi]
+	jmp continue
+	decy:					;dec if above
+	dec yPos[esi]
+	jmp continue
+
+	checky:					;old tail and the unit before is on the xAxis
+	cmp yPos[esi-2], ah		;check if the new tail should be right or left of the old tail
+	jl incx
+	jg decx
+	incx:					;inc if right
+	inc xPos[esi]			
+	jmp continue
+	decx:					;dec if left
+	dec xPos[esi]
+
+	continue:				;add snake tail and update new coin
+	call DrawPlayer		
+	call CreateRandomCoin
+	call DrawCoin			
+
+	mov dl,17				; write updated score
+	mov dh,1
+	call Gotoxy
+	mov al,score
+	call WriteInt
+	ret
+EatingCoin ENDP
+
 
 ;______________________implementation of write string_________________
 ;	load address in EDX
