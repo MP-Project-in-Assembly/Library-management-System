@@ -7,3 +7,6 @@
 ;_____________________implementation of write char____________________
 ;       load char in EAX
 
+;_____________________implementation of gotoxy________________________
+;
+
