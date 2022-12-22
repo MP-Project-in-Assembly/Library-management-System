@@ -167,5 +167,5 @@ MOV BL,7 ;Normal light gray text on a black background
 INT 10h
 DEC CX
 JMP beginning
-
- '
+ender:
+PUSH CS
