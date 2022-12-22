@@ -190,3 +190,5 @@ MOV AH,0Eh ;INT 10,E outputs the character in AL
 MOV BH,0 ;Page number
 MOV BL,7 ;Normal light gray text on a black background
 INT 10h
+DEC CX
+CMP CX,0
