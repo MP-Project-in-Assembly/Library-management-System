@@ -235,6 +235,32 @@ OpenFileAndGetHighScore PROC
         call CloseFile
 OpenFileAndGetHighScore ENDP
 
+
+stringToInt PROC
+	PUSH edx
+	PUSH ecx
+	mov edx, OFFSET buffer
+	atoi:
+	xor eax, eax
+	top:
+	movzx ecx,BYTE PTR[edx]
+	inc edx
+	cmp ecx, '0'
+	jb done
+	cmp ecx, '9'
+	ja done
+	sub ecx, '0'
+	imul eax, 10
+	add eax, ecx
+	jmp top
+	done:
+	POP ecx
+	POP edx
+	ret
+stringToInt ENDP
+
+
+
 OpenFileAndWriteHighScore PROC
         push edx
         push ecx
