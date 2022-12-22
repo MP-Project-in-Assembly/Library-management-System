@@ -143,3 +143,8 @@ JE backspace
 ;At this point, we should have a key input that isn't Escape, Enter, or Backspace.
 ;Let's output it to the screen and also copy it to our memory buffer after the program code.
 ;The ASCII character is already in AL, so we can just work with that.
+MOV DI,CX
+;CX contains how many characters have been entered so far (plus the initial value of 14),
+;but you can't do an offset MOV with CX, so let's use DI, with which we can do an offset MOV.
+MOV [156h+DI],AL ;Store the character in our buffer which begins at 156h
+INC CX
