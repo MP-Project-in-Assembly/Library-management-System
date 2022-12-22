@@ -522,7 +522,7 @@ YouDied PROC
 	mov dl,	57
 	mov dh, 12
 	call Gotoxy
-	mov edx, OFFSET strYouDied	
+	mov edx, OFFSET strYouDied	;"you died"	
 	call WriteString
 	
 	mov dl,	56
