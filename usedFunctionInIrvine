@@ -108,3 +108,26 @@ Randomize PROC
 	  ret
 Randomize ENDP
 
+
+;____________________implementation of RandomRange_______________
+RandomRange PROC
+;
+; Returns an unsigned pseudo-random 32-bit integer
+; in EAX, between 0 and n-1. Input parameter:
+; EAX = n.
+;--------------------------------------------------------------
+	 push  ebx
+	 push  edx
+
+	 mov   ebx,eax  ; maximum value
+	 call  Random32 ; eax = random number
+	 mov   edx,0
+	 div   ebx      ; divide by max value
+	 mov   eax,edx  ; return the remainder
+
+	 pop   edx
+	 pop   ebx
+
+	 ret
+RandomRange ENDP
+
