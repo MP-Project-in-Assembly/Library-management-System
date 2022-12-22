@@ -163,3 +163,9 @@ INT 10h
 MOV AL,20h ;20h is Space!
 MOV AH,9 ;INT 10,9 outputs the character in AL without moving the cursor
 MOV BH,0 ;Page number
+MOV BL,7 ;Normal light gray text on a black background
+INT 10h
+DEC CX
+JMP beginning
+
+ '
