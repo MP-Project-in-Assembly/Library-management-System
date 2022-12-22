@@ -380,6 +380,11 @@ CheckSnake PROC				;check whether the snake head collides w its body
 	mov esi,4				;start checking from index 4(5th unit)
 	mov ecx,1
 	add cl,score
+checkXposition:
+	cmp xPos[esi], al		;check if xpos same ornot
+	je XposSame
+	contloop:
+	inc esi
 
 DrawCoin PROC						;procedure to draw coin
 	;implementation
