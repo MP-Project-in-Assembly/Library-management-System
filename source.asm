@@ -391,7 +391,8 @@ loop checkXposition
 	cmp yPos[esi], ah
 	je died					;if collides, snake dies
 	jmp contloop
-	CheckSnake ENDP
+	
+CheckSnake ENDP
 
 DrawCoin PROC						;procedure to draw coin
 	;implementation
