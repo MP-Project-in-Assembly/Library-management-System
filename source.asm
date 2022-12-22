@@ -475,6 +475,16 @@ EatingCoin PROC
 	ret
 EatingCoin ENDP
 
+YouDied PROC
+	mov eax, 1000
+	call delay
+	Call ClrScr	
+	
+	mov dl,	57
+	mov dh, 12
+	call Gotoxy
+	mov edx, OFFSET strYouDied	;"you died"
+	call WriteString
 
 
 ;_____________________________________________________________________
