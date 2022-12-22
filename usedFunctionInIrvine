@@ -1,3 +1,13 @@
+;
+;-----------------------------------
+; Standard 4-bit color definitions
+;-----------------------------------
+;black        = 0000b
+blue         = 0001b
+green        = 0010b
+cyan         = 0011b
+white        = 1111b
+
 ;______________________implementation of write string_________________
 ;       MOV EDX, ADDRESS   	load address in EDX
 ;	      MOV AH,9      
