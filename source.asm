@@ -221,6 +221,20 @@ loop drawSnake
 INVOKE ExitProcess,0
 main ENDP
 
+OpenFileAndGetHighScore PROC
+        mov edx,OFFSET fileName
+        call OpenInputFile
+        mov ebx,eax
+        mov edx,OFFSET buffer
+        mov ecx , bufferSize
+        call ReadFromFile
+        call stringToInt
+        ;mov eax,DWORD PTR buffer
+        mov highScore,eax
+        mov eax,ebx
+        call CloseFile
+OpenFileAndGetHighScore ENDP
+
 PrintTitle PROC	
 	mov eax,cyan
 	call SetTextColor
