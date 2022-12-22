@@ -278,6 +278,33 @@ OpenFileAndWriteHighScore PROC
         ret
 OpenFileAndWriteHighScore ENDP
 
+intToString proc
+        push ecx
+        push edx
+        push ebx
+        push eax
+        mov ecx,4
+        mov eax,0
+        mov eax,DWORD PTR highScore
+        mov si,3
+        mark:
+        mov ebx,10
+        mov edx,0
+        idiv bx
+        add dl,'0'
+        mov buffer[si],dl
+        ;push dx
+        dec ecx
+        dec si
+        cmp ecx,0
+        jne mark
+        ;mov DWORD PTR highScore,eax
+        pop eax
+        pop ebx
+        pop edx
+        pop ecx
+        ret
+intToString endp
 
 PrintTitle PROC	
 	mov eax,cyan
