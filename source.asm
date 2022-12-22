@@ -641,7 +641,7 @@ ReinitializeGame PROC		;procedure to reinitialize everything
 	mov	inputChar, "+"		;reinitialize inputChar and lastInputChar		
 	dec yPosWall[3]			;reset wall position			
 	Call ClrScr
-	jmp main			;start over the game				
+	jmp mainn			;start over the game				
 ReinitializeGame ENDP
 END main
 
