@@ -155,9 +155,20 @@ loop drawSnake
 		mov cl, xPosWall[0]
 		inc cl
 		cmp xPos[0],cl
-		jg moveLeft
 		je died					; check for left	
 
+	        mov cl, yBlockPos[2]                ;check left block
+		cmp ypos[0], cl
+		jl leftAnotherCheck
+		add cl, vBlockSize
+		dec cl
+		cmp ypos[0], cl
+		jg leftLeftAnotherCheck
+		mov cl, xBlockPos[2]
+		inc cl
+		cmp xpos[0], cl
+		je died          
+		
 		checkRight:		
 		cmp lastInputChar, "a"
 		je dontChgDirection
