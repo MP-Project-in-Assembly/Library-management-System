@@ -7,6 +7,7 @@ INCLUDE Irvine32.inc
 .data
 
 xWall BYTE 52 DUP("#"),0
+hBlock BYTE 20 DUP("#"),0
 
 strScore BYTE "Your score is: ",0
 score BYTE 0
@@ -35,6 +36,10 @@ yPos BYTE 15,15,15,15,15, 100 DUP(?)
 
 xPosWall BYTE 34,34,85,85			;position of upperLeft, lowerLeft, upperRight, lowerRignt wall 
 yPosWall BYTE 5,24,5,24
+
+xBlockPos BYTE 50,70,42,77
+yBlockPos BYTE 8,21,16,10
+vBlockSize = 3
 
 xCoinPos BYTE ?
 yCoinPos BYTE ?
