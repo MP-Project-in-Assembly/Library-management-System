@@ -567,6 +567,18 @@ DrawWall PROC	;procedure to draw wall
 	cmp ecx,0
 	jne LV1
 	
+	mov dl, xBlockPos[3]								;draw right block
+	mov dh, yBlockPos[3]
+	mov eax, "#"
+	mov ecx,3
+	LV2:
+	call Gotoxy
+	call WriteChar
+	inc dh
+	dec ecx
+	cmp ecx,0
+    	jne LV2
+	
 	mov eax,white (black * 16)		;reset color to black and white
 	call SetTextColor
 	ret
