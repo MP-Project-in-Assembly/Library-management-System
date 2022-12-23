@@ -133,7 +133,20 @@ loop drawSnake
 		cmp xpos[0], cl
 		je bottomChecky2
 		jmp moveDown
-
+		
+	       bottomChecky1:
+		mov cl,yBlockPos[2]
+		dec cl
+		cmp ypos[0],cl
+		je died
+		jmp moveDown
+	       bottomChecky2:
+		mov cl ,yBlockPos[3]
+		dec cl
+		cmp ypos[0],cl
+		je died
+		jmp moveDown
+	
 		checkLeft:		
 		cmp lastInputChar, "+"	;check whether its the start of the game
 		je dontGoLeft
