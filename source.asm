@@ -303,6 +303,19 @@ loop drawSnake
 		je topChecky2
 		jmp moveUp
 		
+		topChecky1:
+		mov cl,yBlockPos[2]
+		add cl,vBlockSize
+		cmp ypos[0],cl
+		je died
+		jmp moveUp
+
+		topChecky2:
+		mov cl ,yBlockPos[3]
+		add cl,vBlockSize
+		cmp ypos[0],cl
+		je died
+		jmp moveUp
 		
 		moveDown:			;move down
 		mov eax, speed			;slow down the moving
