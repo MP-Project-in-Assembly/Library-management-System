@@ -18,6 +18,8 @@ msgstart db 5 dup(0ah),15 dup(20h)
  db 15 dup(20h)," | |  __  __ _ _ __ ___   ___| |                    ", 0dh,0ah
  db 15 dup(20h)," | | |_ |/ _` | '_ ` _ \ / _ \ |                    ", 0dh,0ah
  db 15 dup(20h),"
+ db 15 dup(20h),"  \_____|\__,_|_| |_| |_|\___(_)                    ", 0dh,0ah,0ah
+ db 25 dup(20h),"     Press Enter to start.                            $"    
 
 xWall BYTE 52 DUP("#"),0
 hBlock BYTE 20 DUP("#"),0
