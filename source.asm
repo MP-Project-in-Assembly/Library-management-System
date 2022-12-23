@@ -74,6 +74,12 @@ main PROC
         int 21h
         mov ax, 40h                   
         mov es, ax 
+	; attendre la saisie de la touche entree
+         wait_for_enter:
+         mov ah, 00h 
+         int 16h
+        cmp al,0dh      
+        jne wait_for_enter   
 	call DrawWall			;draw walls
 	call DrawScoreboard		;draw scoreboard
 	call PrintTitle
