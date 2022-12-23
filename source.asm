@@ -67,7 +67,12 @@ speed	DWORD 0
 .code
 main PROC
     call OpenFileAndGetHighScore
-    mainn::
+     mov dx, offset msgstart     ;;
+     mov ah, 9 
+     int 21h
+     mov ax, 40h                   
+     mov es, ax 
+     mainn::
 	call DrawWall			;draw walls
 	call DrawScoreboard		;draw scoreboard
 	call PrintTitle
