@@ -84,4 +84,3 @@ Flowchart of this program can be downloaded here: [snake game flowchart.pdf](htt
 | enter             | Pause, (w,a,s,d to unpause) |
 
 (make sure that your capslock is disabled)
-## Screenshots
