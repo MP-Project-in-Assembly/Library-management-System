@@ -729,6 +729,17 @@ loop checkCoinXPos
 	jge finish
 	jmp CreateRandomCoin
 	
+	newCheck3:
+	mov cl, yBlockPos[3]
+	cmp cl, yCoinPos
+	jl finish
+	add cl,vBlockSize
+	cmp yCoinPos,cl
+	jge finish
+	jmp CreateRandomCoin
+	finish:
+	ret
+	
 CreateRandomCoin ENDP
 
 CheckSnake PROC				;check whether the snake head collides w its body 
