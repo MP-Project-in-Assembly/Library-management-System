@@ -277,6 +277,7 @@ loop drawSnake
 		inc cl
 		cmp yPos,cl
 		je died				; check for up	
+		
 		mov cl, xBlockPos[0]
 		cmp xpos[0], cl
 		jl topAnotherCheck
@@ -292,6 +293,15 @@ loop drawSnake
 		inc cl
 		cmp ypos[0], cl
 		je died                                        ;lower block
+		
+		topAnotherCheck:
+		mov cl, xBlockPos[2]        ;left block
+		cmp xpos[0], cl
+		je topChecky1
+		mov cl, xBlockPos[3]        ;right block
+		cmp xpos[0], cl
+		je topChecky2
+		jmp moveUp
 		
 		
 		moveDown:			;move down
