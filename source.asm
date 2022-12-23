@@ -257,6 +257,19 @@ loop drawSnake
 		cmp xpos[0],cl
 		je died
 		
+		rightRightAnotherCheck:
+		mov cl,xBlockPos[0]
+		dec cl
+		cmp xpos[0],cl
+		jne moveRight
+		mov cl ,yBlockPos[0]				   ;check top block
+		cmp ypos[0],cl
+		je died
+		mov cl ,yBlockPos[1]				   ;check bottom block
+		cmp ypos[0],cl
+		je died
+		jmp moveRight
+		
 		checkTop:		
 		cmp lastInputChar, "s"
 		je dontChgDirection
