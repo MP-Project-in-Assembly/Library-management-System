@@ -440,6 +440,19 @@ DrawWall PROC	;procedure to draw wall
 	inc dh
 	cmp dh, yPosWall[3]			;draw left wall
 	jl L12
+	
+	mov dl, xBlockPos[0]                     ;draw top Block
+	mov dh, YBlockPos[0]
+	call Gotoxy
+	mov edx,OFFSET hBlock
+	call WriteString
+
+	mov dl,xBlockPos[0]
+	mov dh, YBlockPos[1]	  		;draw bottom
+	call Gotoxy
+	mov edx,OFFset hBlock
+	call WriteString
+	
 	mov eax,white (black * 16)		;reset color to black and white
 	call SetTextColor
 	ret
