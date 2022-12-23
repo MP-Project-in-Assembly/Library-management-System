@@ -18,8 +18,9 @@ The idea behind of this program was the classic "Snake" game. This program was m
 ## Features and Functions
 
 #### Game Speed Selection
-- User may choose from three speed levels, level 1 to level 3, level 3 being the slowest.
+- User may choose from three speed levels, level 1(fastest) level 2, level 3 (slowest).
 - Each of the speed levels have a 40ms difference.
+- we implement that by using delay function when moving snake.
 
 #### Random Generation of coin
 - A coin is generated randomly at the start of every game or when the snake eats the previous coin
