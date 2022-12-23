@@ -55,12 +55,12 @@ The idea behind of this program was the classic "Snake" game. This program was m
 - The new tail is at the position of the old tail, a new tail is added according to the direction of the old tail
 
 #### Self Collision Detection
-- When the Snake moves, the coordinate of the head is compared with the coordinate of the coin to check whether the snake collides with itself
+- When the Snake moves, the coordinate of the head is compared with the coordinate of the rest of snake start of unit number 5 to check whether the snake collides with itself
 - Snake dies when it collides with itself
 - A function loops through the coordinates of the body of the snake and compares with the head position to check if they collide.
 
 #### Wall Collision Detection
-- When the Snake moves, the coordinate of the head is compared with the coordinate of the coin to check whether the snake collides with the wall
+- When the Snake moves, the coordinate of the head is compared with the coordinate of the wall to check whether the snake collides with the wall
 - Snake dies when it collides with the wall
 - A function compares the coordinates of the wall and the head to check if they collide
 
