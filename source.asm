@@ -79,12 +79,14 @@ main PROC
          mov ah, 00h 
          int 16h
         cmp al,0dh      
-        jne wait_for_enter   
+        jne wait_for_enter
+	 mov al, 1 ; basculer vers la page 1 
+         mov ah, 05h
+         int 10h
 	call DrawWall			;draw walls
 	call DrawScoreboard		;draw scoreboard
 	call PrintTitle
 	call ChooseSpeed		;let player to choose Speed
-	
 	mov esi,0
 	mov ecx,5
 drawSnake:
