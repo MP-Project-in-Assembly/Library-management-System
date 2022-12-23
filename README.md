@@ -13,9 +13,14 @@
 
 ## About the project
 
-The idea behind of this program was the classic "Snake" game. This program was made using Microsoft Visual Studio 2019's 32bit MASM architecture in protected mode (no interrupts) and the Irvine32 library.
+The idea behind of this program was the classic "Snake" game. This program was made using Microsoft Visual Studio 2019's 32bit MASM architecture in flat mode and the Irvine32 library.
 
 ## Features and Functions
+
+###Draw
+- First we begin to draw wall and snake.
+- we set corrdenaties of wall (34,5),(85,5),(34,24),(85,24)
+
 
 #### Game Speed Selection
 - User may choose from three speed levels, level 1(fastest) level 2, level 3 (slowest).
