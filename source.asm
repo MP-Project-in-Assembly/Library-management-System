@@ -66,10 +66,7 @@ strSpeed BYTE "Speed (1-fast, 2-medium, 3-slow): ",0
 speed	DWORD 0
 .code
 main PROC
-    call OpenFileAndGetHighScore
-    
-     mainn::
-        mov dx, offset msgstart     ;;
+       mov dx, offset msgstart     ;;
         mov ah, 9 
         int 21h
         mov ax, 40h                   
@@ -83,7 +80,11 @@ main PROC
 	 mov al, 1 ; basculer vers la page 1 
          mov ah, 05h
          int 10h
-	call DrawWall			;draw walls
+	call DrawWall	;draw walls	
+    call OpenFileAndGetHighScore
+    
+     mainn::
+      	
 	call DrawScoreboard		;draw scoreboard
 	call PrintTitle
 	call ChooseSpeed		;let player to choose Speed
