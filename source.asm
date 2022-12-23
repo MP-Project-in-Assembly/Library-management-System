@@ -107,9 +107,24 @@ loop drawSnake
 		mov cl, yPosWall[1]
 		dec cl					;one unit ubove the y-coordinate of the lower bound
 		cmp yPos[0],cl
-		jl moveDown
 		je died					;die if crash into the wall
-		
+				
+		mov cl, xBlockPos[0]
+		cmp xpos[0], cl
+		jl bottomAnotherCheck
+		mov cl, xBlockPos[1]
+		dec cl
+		cmp xpos[0], cl
+		jg bottomAnotherCheck
+		mov cl, yBlockPos[0]
+		dec cl
+		cmp ypos[0], cl
+		je died                              ; upper block
+		mov cl , yBlockPos[1]
+		dec cl
+		cmp ypos[0], cl
+		je died                             ;lower block
+
 		checkLeft:		
 		cmp lastInputChar, "+"	;check whether its the start of the game
 		je dontGoLeft
