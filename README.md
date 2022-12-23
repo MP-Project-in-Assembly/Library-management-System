@@ -32,8 +32,8 @@ The idea behind of this program was the classic "Snake" game. This program was m
 - we implement that by using delay function when moving snake.
 
 #### Random Generation of coin
-- A coin is generated randomly at the start of every game or when the snake eats the previous coin
-- A checking function is also created to make sure that the random coin doesnt generate on the coordinates of the snake.
+- A coin is generated randomly at the start of every game or when the snake eats the previous coin and always in the range of coordenaties of wall.
+- A checking function is also created to make sure that the random coin does not generate on the coordinates of the snake.
 - A new coin is regenerated if the current one is generated at an invalid coordinate.
 
 #### Accepting keyboard input
