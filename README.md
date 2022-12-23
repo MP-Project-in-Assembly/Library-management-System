@@ -22,7 +22,8 @@ The idea behind of this program was the classic "Snake" game. This program was m
 - we set coordenaties of wall (34,5),(85,5),(34,24),(85,24)
 - key symbole of wall is #
 - the snake will apper as Xxxxx with its head directed to left but not moving until Player enter any movement key.
-- Initial coordenaties of snake is (45,15) for head,(44,15),(43,15),(42,15),(41,15)
+- Initial coordenaties of snake is (45,15) for head,(44,15),(43,15),(42,15),(41,15).
+- "Your score is 0" will apper in left top of screen and when snake eats a coin it increment score and display it.
 
 
 #### Game Speed Selection
