@@ -181,11 +181,19 @@ loop drawSnake
 		inc cl
 		cmp xpos[0],cl
 		je died
-		leftLeftAnotherCheck:
+	       leftLeftAnotherCheck:
 		mov cl,xBlockPos[1]
 		cmp xpos[0],cl
 		jne moveLeft
 		
+		mov cl ,yBlockPos[0]                ;check top block
+		cmp ypos[0],cl
+		je died
+		mov cl ,yBlockPos[1]                ;check bottom block
+		cmp ypos[0],cl
+		je died
+		jmp moveLeft
+
 		
 		checkRight:		
 		cmp lastInputChar, "a"
