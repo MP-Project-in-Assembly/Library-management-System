@@ -588,6 +588,16 @@ loop checkCoinXPos
 	mov cl,yBlockPos[1];                ;bottom Block
 	cmp yCoinPos,cl
 	je newCheck1
+
+	newCheck1:
+	mov cl , xBlockPos[0]
+	cmp xCoinPos, cl
+	jl finish
+	mov cl,xBlockPos[1]
+	cmp xCoinPos,cl
+	jge finish
+	jmp CreateRandomCoin
+	
 CreateRandomCoin ENDP
 
 CheckSnake PROC				;check whether the snake head collides w its body 
