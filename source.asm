@@ -100,29 +100,31 @@ loop drawSnake
 	call DrawCoin			;set up finish
 	
 	gameLoop::
-		mov dl,106						;move cursor to coordinates
+		mov dl,106	   ;move cursor to coordinates
 		mov dh,3
 		call Gotoxy
 
 		; get user key input
 		call ReadKey
-        jz noKey						;jump if no key is entered
+                jz noKey	         ;jump if no key is entered (al = 0H)
+		
 		processInput:
-		mov bl, inputChar
-		mov lastInputChar, bl
-		mov inputChar,al				;assign variables
+		mov bl, inputChar        ;memory to memory transfer
+		mov lastInputChar, bl    ;save in bl temporarily   
+		mov inputChar,al	 ;assign variables
 
 		noKey:
 		cmp inputChar,"x"	
-		je exitgame						;exit game if user input x
+		je exitgame	         ;exit game if user input x
 
-		cmp inputChar,"w"
+		cmp inputChar,"w"        
 		je checkTop
 
-		cmp inputChar,"s"
+		cmp inputChar,"s"        
 		je checkBottom
-
-		cmp inputChar,"a"
+		
+		cmp inputChar,"a"        
+		
 		je checkLeft
 
 		cmp inputChar,"d"
