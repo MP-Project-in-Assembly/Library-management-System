@@ -12,12 +12,12 @@ msgstart db 5 dup(0ah),15 dup(20h)
  db 15 dup(20h),                " |__   __| |           / ____|           | |        ", 0dh,0ah       
  db 15 dup(20h),                "    | |  | |__   ___  | (___  _ __   __ _| | _____  ", 0dh,0ah
  db 15 dup(20h),                "    | |  | '_ \ / _ \  \___ \| '_ \ / _` | |/ / _ \ ", 0dh,0ah
- db 15 dup(20h),                "
+ db 15 dup(20h),                "                                                    ",
  db 15 dup(20h),                "   _|_|_ |_| |_|\___| |_____/|_| |_|\__,_|_|\_\___| ", 0dh,0ah
  db 15 dup(20h),                "  / ____|                    | |                    ", 0dh,0ah
  db 15 dup(20h),                " | |  __  __ _ _ __ ___   ___| |                    ", 0dh,0ah
  db 15 dup(20h),                " | | |_ |/ _` | '_ ` _ \ / _ \ |                    ", 0dh,0ah
- db 15 dup(20h),                "
+ db 15 dup(20h),                "                                                    ",
  db 15 dup(20h),                "  \_____|\__,_|_| |_| |_|\___(_)                    ", 0dh,0ah,0ah
  db 25 dup(20h),                "     Press Enter to start.                            $"    
 
@@ -89,11 +89,12 @@ main PROC
 	call PrintTitle
 	call ChooseSpeed		;let player to choose Speed
 	mov esi,0
-	mov ecx,5
-drawSnake:
-	call DrawPlayer			;draw snake(start with 5 units)
-	inc esi
-loop drawSnake
+	mov ecx,5  
+
+    drawSnake:
+    	call DrawPlayer			;draw snake(start with 5 units)
+    	inc esi
+    loop drawSnake
 
 	call Randomize                  ;implementation inside Irvine 
 	call CreateRandomCoin
