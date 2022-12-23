@@ -702,6 +702,14 @@ loop checkCoinXPos
 	mov cl,yBlockPos[1];                ;bottom Block
 	cmp yCoinPos,cl
 	je newCheck1
+	
+	mov cl,xBlockPos[2]                        ;left Block
+	cmp xCoinPos,cl
+	je newCheck2
+	mov cl,xBlockPos[3]                        ;right Block
+	cmp xCoinPos,cl
+	je newCheck3
+	jmp finish
 
 	newCheck1:
 	mov cl , xBlockPos[0]
