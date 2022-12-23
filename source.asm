@@ -375,10 +375,10 @@ loop drawSnake
 		mov esi,0
 		mov bl,xPos[0]
 		cmp bl,xCoinPos
-		jne gameloop			;reloop if snake is not intersecting with coin
+		jne gameloop			;reloop if snake is not intersecting with Xposition of the coin
 		mov bl,yPos[0]
 		cmp bl,yCoinPos
-		jne gameloop			;reloop if snake is not intersecting with coin
+		jne gameloop			;reloop if snake is not intersecting with Yposition of the coin
 
 		call EatingCoin			;call to update score, append snake and generate new coin
 	jmp gameLoop				;reiterate the gameloop
