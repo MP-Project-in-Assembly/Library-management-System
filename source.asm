@@ -44,15 +44,15 @@ buffer BYTE  bufferSize DUP(?)
 bytesRead DWORD ?
 tst BYTE "005",0
 
-snake BYTE "X", 104 DUP("x")
+snake BYTE "X", 104 DUP("x")          ; the maximum length of the snake can be 104 ("x") byte + ("X")
 
-xPos BYTE 45,44,43,42,41, 100 DUP(?)
-yPos BYTE 15,15,15,15,15, 100 DUP(?)
+xPos BYTE 45,44,43,42,41, 100 DUP(?)  ; the starting position of the snake will start from              
+yPos BYTE 15,15,15,15,15, 100 DUP(?)  ; (41 , 15) -> (45 , 15) 5 byte in lenght as a start (45-41+1) = 5
 
-xPosWall BYTE 34,34,85,85			;position of upperLeft, lowerLeft, upperRight, lowerRignt wall 
-yPosWall BYTE 5,24,5,24
+xPosWall BYTE 34,34,85,85	      ; position of upperLeft, lowerLeft, upperRight, lowerRignt wall 
+yPosWall BYTE 5,24,5,24		      ; (34,5) , (85,5) , (85,24) , (32,24) coordinates of the wall square
 
-xBlockPos BYTE 50,70,42,77
+xBlockPos BYTE 50,70,42,77              
 yBlockPos BYTE 8,21,16,10
 vBlockSize = 3
 
@@ -117,19 +117,18 @@ loop drawSnake
 		cmp inputChar,"x"	
 		je exitgame	         ;exit game if user input x
 
-		cmp inputChar,"w"        
+		cmp inputChar,"w"         ; "w" for move up  
 		je checkTop
 
-		cmp inputChar,"s"        
+		cmp inputChar,"s"         ; "s" for move down    
 		je checkBottom
 		
-		cmp inputChar,"a"        
-		
+		cmp inputChar,"a"         ; "a" for move left
 		je checkLeft
 
-		cmp inputChar,"d"
+		cmp inputChar,"d"         ; "d" for move right
 		je checkRight
-		jne gameLoop					; reloop if no meaningful key was entered
+		jne gameLoop		  ; reloop if no meaningful key was entered
 		
 		
 		; check whether can continue moving
