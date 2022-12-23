@@ -573,12 +573,21 @@ checkCoinXPos:
 	continueloop:
 	inc esi
 loop checkCoinXPos
-	ret							; return when coin is not on snake
+	jmp checkBlocks							;check blocks when coin is not on snake
 	checkCoinYPos:
 	movzx eax, yCoinPos			
 	cmp al, yPos[esi]
 	jne continueloop			; jump back to continue loop if yPos of snake at esi != yPos of coin
 	call CreateRandomCoin		; coin generated on snake, calling function again to create another set of coordinates
+
+	;check if the coin is on the Blocks
+	CheckBlocks:
+	mov cl, yBlockPos[0]                ;top Block
+	cmp yCoinPos,cl
+	je newCheck1
+	mov cl,yBlockPos[1];                ;bottom Block
+	cmp yCoinPos,cl
+	je newCheck1
 CreateRandomCoin ENDP
 
 CheckSnake PROC				;check whether the snake head collides w its body 
