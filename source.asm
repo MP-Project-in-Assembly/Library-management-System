@@ -276,9 +276,22 @@ loop drawSnake
 		mov cl, yPosWall[0]
 		inc cl
 		cmp yPos,cl
-		jg moveUp
 		je died				; check for up	
-		
+		mov cl, xBlockPos[0]
+		cmp xpos[0], cl
+		jl topAnotherCheck
+		mov cl, xBlockPos[1]
+		dec cl
+		cmp xpos[0], cl
+		jg topAnotherCheck
+		mov cl, yBlockPos[0]
+		inc cl
+		cmp ypos[0], cl
+		je died                                        ; upper block
+		mov cl , yBlockPos[1]
+		inc cl
+		cmp ypos[0], cl
+		je died                                        ;lower block
 		
 		
 		moveDown:			;move down
