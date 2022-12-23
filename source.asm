@@ -849,7 +849,7 @@ EatingCoin ENDP
 YouDied PROC
 	mov eax, 1000
 	call delay
-	Call ClrScr	
+	Call ClrScr	;used to clear the screen	
 	
 	mov dl,	57
 	mov dh, 12
