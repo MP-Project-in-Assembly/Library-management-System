@@ -6,6 +6,14 @@ INCLUDE Irvine32.inc
 
 .data
 
+; message de debut
+msgstart db 5 dup(0ah),15 dup(20h)
+ db             "  _______ _             _____             _         ", 0dh,0ah
+ db 15 dup(20h)," |__   __| |           / ____|           | |        ", 0dh,0ah       
+ db 15 dup(20h),"    | |  | |__   ___  | (___  _ __   __ _| | _____  ", 0dh,0ah
+ db 15 dup(20h),"    | |  | '_ \ / _ \  \___ \| '_ \ / _` | |/ / _ \ ", 0dh,0ah
+ db 15 dup(20h),"
+
 xWall BYTE 52 DUP("#"),0
 hBlock BYTE 20 DUP("#"),0
 
