@@ -8,7 +8,6 @@
 | 04              | Ahmed Hamdy Mohamed Fahmy   |
 | 13              | Aya Osama Said Taha         |
 | 14              | Passant Amr Ali Hassan      |
-##
 
 ## About the project
 
