@@ -5,6 +5,20 @@ ExitProcess PROTO, dwExitCode: DWORD
 INCLUDE Irvine32.inc
 
 .data
+; message de debut
+
+msgstart1 BYTE   "  _______ _             _____             _         ", 0
+msgstart2 BYTE   " |__   __| |           / ____|           | |        ", 0
+msgstart3 BYTE   "    | |  | |__   ___  | (___  _ __   __ _| | _____  ", 0
+msgstart4 BYTE   "    | |  | '_ \ / _ \  \___ \| '_ \ / _` | |/ / _ \ ", 0
+msgstart5 BYTE   "                                                    ", 0
+msgstart6 BYTE   "   _|_|_ |_| |_|\___| |_____/|_| |_|\__,_|_|\_\___| ", 0
+msgstart7 BYTE   "  / ____|                                           ", 0
+msgstart8 BYTE   " | |  __  __ _ _ __ ___   ___                       ", 0
+msgstart9 BYTE   " | | |_ |/ _` | '_ ` _ \ / _ \                      ", 0
+msgstart10 BYTE  "                                                    ", 0
+msgstart11 BYTE  "  \_____|\__,_|_| |_| |_|\___|                      ", 0
+
 
 xWall BYTE 52 DUP("#"),0
 hBlock BYTE 20 DUP("#"),0
