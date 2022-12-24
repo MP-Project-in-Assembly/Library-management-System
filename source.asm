@@ -25,6 +25,7 @@ hBlock BYTE 20 DUP("#"),0
 
 strScore BYTE "Your score is: ",0
 score BYTE 0
+sscore BYTE 0
 
 strTryAgain BYTE "Try Again?  1=yes, 0=no",0
 invalidInput BYTE "invalid input",0
@@ -34,6 +35,7 @@ blank BYTE "                                     ",0
 tit BYTE "SNAKE GAME",0
 separator BYTE "---------------------------------",0
 hlths BYTE "Lives:",3,3,3,0
+hlth BYTE 3
 highScoreStr BYTE "High Score: ",0
 
 highScore DWORD ?
@@ -553,8 +555,6 @@ PrintStartMsg PROC
 PrintStartMsg ENDP
 
 PrintTitle PROC	
-	mov eax,cyan
-	call SetTextColor
 	mov dl, 55
 	mov dh, 1
 	call Gotoxy
@@ -565,14 +565,12 @@ PrintTitle PROC
 	call Gotoxy
 	mov edx,OFFSET separator
 	call WriteString
-	mov eax,white (black * 16)		;reset color to black and white
-	call SetTextColor
+
 	ret
 PrintTitle ENDP
 
 DrawWall PROC	;procedure to draw wall
-        mov eax,magenta 
-	call SetTextColor
+
 	mov dl,xPosWall[0]
 	mov dh,yPosWall[0]
 	call Gotoxy	
@@ -644,14 +642,9 @@ DrawWall PROC	;procedure to draw wall
 	cmp ecx,0
     	jne LV2
 	
-	mov eax,white (black * 16)		;reset color to black and white
-	call SetTextColor
 	ret
 DrawWall ENDP
 DrawScoreboard PROC	;procedure to draw scoreboard
-        mov eax,blue
-	call SetTextColor
-	
 	mov dl,27
 	mov dh,3
 	call Gotoxy
@@ -671,8 +664,6 @@ DrawScoreboard PROC	;procedure to draw scoreboard
 	call WriteString
 	mov eax, highScore
 	call WriteInt
-	mov eax,white (black * 16)		;reset color to black and white
-	call SetTextColor
 	ret
 DrawScoreboard ENDP
 ChooseSpeed PROC			;procedure for player to choose speed
@@ -828,7 +819,6 @@ loop checkXposition
 CheckSnake ENDP
 
 DrawCoin PROC						;procedure to draw coin
-	;implementation
 	mov eax,yellow (yellow * 16)
 	call SetTextColor				;set color to yellow for coin
 	mov dl,xCoinPos
