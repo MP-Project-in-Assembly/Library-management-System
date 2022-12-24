@@ -875,8 +875,6 @@ YouDied PROC
 	mov dl,	50
 	mov dh, 18
 	call Gotoxy
-	mov eax, red
-	call SetTextColor
 	mov edx, OFFSET strTryAgain
 	call WriteString		;"try again?"
 	
@@ -892,6 +890,8 @@ YouDied PROC
 
 	mov dh,	17
 	call Gotoxy
+	mov eax, red
+	call SetTextColor
 	mov edx, OFFSET invalidInput	;"Invalid input"
 	call WriteString		
 	mov dl,	56
