@@ -875,6 +875,8 @@ YouDied PROC
 	mov dl,	50
 	mov dh, 18
 	call Gotoxy
+	mov eax, red
+	call SetTextColor
 	mov edx, OFFSET strTryAgain
 	call WriteString		;"try again?"
 	
