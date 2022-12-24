@@ -6,21 +6,6 @@ INCLUDE Irvine32.inc
 
 .data
 
-; message de debut
-msgstart db 5 dup(0ah),15 dup(20h)
- db                             "  _______ _             _____             _         ", 0dh,0ah
- db 15 dup(20h),                " |__   __| |           / ____|           | |        ", 0dh,0ah       
- db 15 dup(20h),                "    | |  | |__   ___  | (___  _ __   __ _| | _____  ", 0dh,0ah
- db 15 dup(20h),                "    | |  | '_ \ / _ \  \___ \| '_ \ / _` | |/ / _ \ ", 0dh,0ah
- db 15 dup(20h),                "                                                    ",
- db 15 dup(20h),                "   _|_|_ |_| |_|\___| |_____/|_| |_|\__,_|_|\_\___| ", 0dh,0ah
- db 15 dup(20h),                "  / ____|                    | |                    ", 0dh,0ah
- db 15 dup(20h),                " | |  __  __ _ _ __ ___   ___| |                    ", 0dh,0ah
- db 15 dup(20h),                " | | |_ |/ _` | '_ ` _ \ / _ \ |                    ", 0dh,0ah
- db 15 dup(20h),                "                                                    ",
- db 15 dup(20h),                "  \_____|\__,_|_| |_| |_|\___(_)                    ", 0dh,0ah,0ah
- db 25 dup(20h),                "     Press Enter to start.                            $"    
-
 xWall BYTE 52 DUP("#"),0
 hBlock BYTE 20 DUP("#"),0
 
@@ -66,25 +51,9 @@ strSpeed BYTE "Speed (1-fast, 2-medium, 3-slow): ",0
 speed	DWORD 0
 .code
 main PROC
-       mov dx, offset msgstart     ;;
-        mov ah, 9 
-        int 21h
-        mov ax, 40h                   
-        mov es, ax 
-	; attendre la saisie de la touche entree
-         wait_for_enter:
-         mov ah, 00h 
-         int 16h
-        cmp al,0dh      
-        jne wait_for_enter
-	 mov al, 1 ; basculer vers la page 1 
-         mov ah, 05h
-         int 10h
-	call DrawWall	;draw walls	
-    call OpenFileAndGetHighScore
-    
+    call OpenFileAndGetHighScore    
      mainn::
-      	
+	call DrawWall	;draw walls	      	
 	call DrawScoreboard		;draw scoreboard
 	call PrintTitle
 	call ChooseSpeed		;let player to choose Speed
