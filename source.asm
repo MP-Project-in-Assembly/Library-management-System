@@ -477,6 +477,81 @@ intToString proc
         ret
 intToString endp
 
+PrintStartMsg PROC
+	mov dl , startx
+	mov dh , starty
+	call Gotoxy
+	mov edx, OFFSET msgstart1
+	call WriteString
+	
+		mov dl , startx
+		inc starty
+		mov dh , starty
+	call Gotoxy
+	mov edx,OFFSET msgstart2
+	call WriteString
+		mov dl , startx
+		inc starty
+		mov dh , starty
+	call Gotoxy
+	mov edx,OFFSET msgstart3
+	call WriteString
+		mov dl , startx
+		inc starty
+		mov dh , starty
+	call Gotoxy
+	mov edx,OFFSET msgstart4
+	call WriteString
+		mov dl , startx
+		inc starty
+		mov dh , starty
+	call Gotoxy
+	mov edx,OFFSET msgstart5
+	call WriteString
+		mov dl , startx
+		inc starty
+		mov dh , starty
+	call Gotoxy
+	mov edx,OFFSET msgstart6
+	call WriteString
+		mov dl , startx
+		inc starty
+		mov dh , starty
+	call Gotoxy
+	mov edx,OFFSET msgstart7
+	call WriteString
+		mov dl , startx
+		inc starty
+		mov dh , starty
+	call Gotoxy
+	mov edx,OFFSET msgstart8
+	call WriteString
+		mov dl , startx
+		inc starty
+		mov dh , starty
+	call Gotoxy
+	mov edx,OFFSET msgstart9
+	call WriteString
+		mov dl , startx
+		inc starty
+		mov dh , starty
+	call Gotoxy
+	mov edx,OFFSET msgstart10
+	call WriteString
+		mov dl , startx
+		inc starty
+		mov dh , starty
+	call Gotoxy
+	mov edx,OFFSET msgstart11
+	call WriteString
+	
+	mov eax,2000
+	call delay
+	Call ClrScr
+	ret
+	
+PrintStartMsg ENDP
+
 PrintTitle PROC	
 	mov eax,cyan
 	call SetTextColor
