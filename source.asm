@@ -952,10 +952,10 @@ YouDied PROC
 	mov dh, 19
 	mov dl,	56
 	call Gotoxy
-	call ReadInt			;get user input
-	cmp al, 1				;check user input
+	call ReadChar			;get user input
+	cmp al, '1'				;check user input
 	je playagn				;playagn
-	cmp al, 0
+	cmp al, '0'
 	je exitgame				;exitgame
 
 	mov dh,	17
