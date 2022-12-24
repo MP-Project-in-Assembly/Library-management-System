@@ -384,6 +384,12 @@ main PROC
 	jmp gameLoop			;restart the game loop
 
 	died::
+	dec hlth
+        movzx ebx,hlth
+        add ebx , 6
+        mov hlths[ebx],0
+        cmp hlth , 0
+        jne ReinitializeReinitializeGame
 	call YouDied
 	 
 	playagn::			
@@ -650,8 +656,8 @@ DrawScoreboard PROC	;procedure to draw scoreboard
 	call Gotoxy
 	mov edx,OFFSET strScore		;print string that indicates score
 	call WriteString
-	mov eax,"0"
-	call WriteChar				;scoreboard starts with 0
+	mov al,score
+	call WriteInt				;scoreboard starts with 0
 	mov dl, 12; 
 	mov dh,3
 	call Gotoxy
@@ -675,6 +681,8 @@ ChooseSpeed PROC			;procedure for player to choose speed
 	call WriteString
 	mov esi, 40				; milisecond difference per speed level
 	mov eax,0
+	cmp speed , 0
+        jne fini
 	call readInt			
 	cmp ax,1				;input validation
 	jl invalidspeed                         ;jump if less than 1
@@ -682,6 +690,16 @@ ChooseSpeed PROC			;procedure for player to choose speed
 	jg invalidspeed                         ;jump if greater than one
 	mul esi	
 	mov speed, eax			;assign speed variable in mililiseconds
+	jmp ffini
+        fini:
+        ;;dec dl
+        call Gotoxy
+        mov eax,speed
+        mov esi,40
+        mov edx,0
+        div si
+        call WriteInt
+        ffini:
 	ret
 
 	invalidspeed:			;jump here if user entered an invalid number
@@ -734,7 +752,7 @@ CreateRandomCoin PROC				;procedure to create a random coin
 	mov yCoinPos,al
 
 	mov ecx, 5
-	add cl, score				;loop number of snake unit
+	add cl, sscore				;loop number of snake unit
 	mov esi, 0
 checkCoinXPos:
 	movzx eax,  xCoinPos
@@ -803,7 +821,7 @@ CheckSnake PROC				;check whether the snake head collides w its body
 	mov ah, yPos[0] 
 	mov esi,4				;start checking from index 4(5th unit)
 	mov ecx,1
-	add cl,score
+	add cl,sscore
 checkXposition:
 	cmp xPos[esi], al		;check if xpos same ornot
 	je XposSame
@@ -835,7 +853,7 @@ DrawCoin ENDP
 
 DrawBody PROC		;procedure to print body of the snake
 	mov ecx, 4
-	add cl, score	;number of iterations to print the snake body n tail	
+	add cl, sscore	;number of iterations to print the snake body n tail	
 	printbodyloop:	
 	inc esi		;loop to print remaining units of snake
 	call UpdatePlayer
@@ -853,9 +871,9 @@ DrawBody ENDP
 
 EatingCoin PROC
 	; snake is eating coin
-	inc score
+	inc sscore
 	mov ebx,4
-	add bl, score
+	add bl, sscore
 	mov esi, ebx
 	mov ah, yPos[esi-1]
 	mov al, xPos[esi-1]	
@@ -890,10 +908,10 @@ EatingCoin PROC
 	call CreateRandomCoin
 	call DrawCoin			
 
-	mov dl,41				; write updated score
+	mov dl,42				; write updated score
 	mov dh,3
 	call Gotoxy
-	mov al,score
+	movzx eax,score
 	call WriteInt
 	ret
 EatingCoin ENDP
@@ -934,10 +952,10 @@ YouDied PROC
 	mov dh, 19
 	mov dl,	56
 	call Gotoxy
-	call ReadChar			;get user input
-	cmp al, '1'				;check user input
+	call ReadInt			;get user input
+	cmp al, 1				;check user input
 	je playagn				;playagn
-	cmp al, '0'
+	cmp al, 0
 	je exitgame				;exitgame
 
 	mov dh,	17
@@ -969,7 +987,13 @@ ReinitializeGame PROC		;procedure to reinitialize everything
 	mov yPos[2], 15
 	mov yPos[3], 15
 	mov yPos[4], 15		;reinitialize snake position			
+	mov speed,0
 	mov score,0		;reinitialize score		
+	mov sscore,0
+        mov hlth,3
+        mov hlths[6],3
+        mov hlths[7],3
+        mov hlths[8],3
 	mov lastInputChar, 0
 	mov	inputChar, "+"		;reinitialize inputChar and lastInputChar		
 	dec yPosWall[3]			;reset wall position			
