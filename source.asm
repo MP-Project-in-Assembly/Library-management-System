@@ -55,6 +55,9 @@ xBlockPos BYTE 50,70,42,77
 yBlockPos BYTE 8,21,16,10
 vBlockSize = 3
 
+startx BYTE 20
+starty BYTE 5
+
 xCoinPos BYTE ?
 yCoinPos BYTE ?
 
@@ -65,6 +68,7 @@ strSpeed BYTE "Speed (1-fast, 2-medium, 3-slow): ",0
 speed	DWORD 0
 .code
 main PROC
+    call PrintStartMsg
     call OpenFileAndGetHighScore    
      mainn::
 	call DrawWall	;draw walls	      	
