@@ -890,8 +890,9 @@ YouDied PROC
 
 	mov dh,	17
 	call Gotoxy
-	mov eax, red
+	mov eax, red     		; change the color of "Invalid input" to red
 	call SetTextColor
+	
 	mov edx, OFFSET invalidInput	;"Invalid input"
 	call WriteString		
 	mov dl,	56
