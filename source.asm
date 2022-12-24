@@ -1000,4 +1000,25 @@ ReinitializeGame PROC		;procedure to reinitialize everything
 	Call ClrScr
 	jmp mainn			;start over the game				
 ReinitializeGame ENDP
+
+ReinitializeReinitializeGame PROC
+        mov eax,800
+        call delay
+        mov xPos[0], 45
+        mov xPos[1], 44
+        mov xPos[2], 43
+        mov xPos[3], 42
+        mov xPos[4], 41
+        mov yPos[0], 15
+        mov yPos[1], 15
+        mov yPos[2], 15
+        mov yPos[3], 15
+        mov yPos[4], 15                                ;reinitialize snake position
+        mov sscore,0
+        mov lastInputChar, 0
+        mov  inputChar, "+"                        ;reinitialize inputChar and lastInputChar                
+        dec yPosWall[3]                        ;reset wall position
+        Call ClrScr
+        jmp mainn                                        ;start over the game
+ReinitializeReinitializeGame ENDP
 END main
